@@ -1,28 +1,28 @@
 import './index.less'
-import {getUser} from "~/ajax";
-import codes from "config/codeConfig"
+import codes from "~/config/codeConfig"
+import {getUser} from "~/ajax/user";
+import message from 'antd/lib/message';
+import {getBooks} from "~/ajax/book";
 
 getUser('123').then((data) => {
     if (data.code === codes.success){
         message.success('请求成功');
         console.log(data);
         return ;
-    }else if (data.code == ""){
-
+    }else {
+        console.log("error", data);
     }
 });
 
-doLogin('dgb','drb').then((data) => {
-    if (data.code === "0"){
-        message.success('请求成功');
-        console.log(data);
-        return ;
-    }else if(data.code=="404"){
-        console.log(errMsg);
-    }else{
-        console.log("error!!!!!!!!!!!!!");
-        message.error('大概是用户的错吧');
-    }
-}).finally(() => {
-    message.success('假装这是请求结束 loading消失');
+
+getBooks().then((data) => {
+  if (data.code === codes.success){
+    message.success('请求成功');
+    console.log(data);
+    return ;
+  }else {
+    console.log("error", data);
+  }
 });
+
+
