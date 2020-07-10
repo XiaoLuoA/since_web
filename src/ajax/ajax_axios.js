@@ -64,7 +64,7 @@ function ajax (method, url, params, errMsg = '网络或服务器异常，请重�
  */
 function isGlobalErrCode (code) {
   // TODO 这里还需要补全一下
-  return (code == 11 ) ? true : false;
+  return (code == 500 ) ? true : false;
 }
 export {ajax};
 export const get = (url, params, errMsg) => {
